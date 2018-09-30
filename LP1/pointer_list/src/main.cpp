@@ -3,14 +3,14 @@
 int main(){
 	//Teste da função min -------------------------------------------------
 
-
+	/*
 
 	int A[] = {3, 4, 5, 1, -5, 4};
 	compare cmp = generic::cmp;
 	auto *small = generic::min(std::begin(A), std::end(A), sizeof(A[0]), cmp);
 	std::cout << *(int *)small << std::endl;
 
-	
+	*/
 
 	//Teste da função reverse ---------------------------------------------
 
@@ -38,7 +38,8 @@ int main(){
 		std::cout << " " << B[i] << " ";
 	}
 	std::cout << "]" << std::endl;
-	std::cout << *(int *)d << std::endl;
+	std::cout << "Address: " << (int *)d << std::endl;
+	std::cout << "Value of address position: " << *(int *)d << std::endl;
 
 	*/
 
