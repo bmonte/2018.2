@@ -45,11 +45,11 @@ int main(){
 
 	//Teste da função clone -------------------------------------------------
 
-	/*
+ /*
 
 	int A[] = {3, 4, 5, 1, 5, 4};
 	auto *d = generic::clone(std::begin(A), std::end(A), sizeof(A[0]));
-	byte *dd = static_cast<byte *> (d);
+	byte *d_new = static_cast<byte *> (d);
 	byte *d_it = static_cast<byte *> (d);
 	std::cout << "[";
 	for(int i = 0; i < (int)(std::end(A) - std::begin(A)); i++){
@@ -57,7 +57,7 @@ int main(){
 		d_it+=sizeof(A[0]);
 	}
 	std::cout << "]" << std::endl;
-	delete[] dd;
+	delete[] d_new;
 
 	*/
 
@@ -66,9 +66,12 @@ int main(){
 	/*
 
 	int A[] = {3, 4, 5, 1, -5, 4};
-	predicate p = generic::p;
+	predicate p = generic::even;
+	predicate pp = generic::odd;
 	auto *r  = generic::find_if(std::begin(A), std::end(A), sizeof(A[0]), p);
-	std::cout << *(int *)r << std::endl;
+	std::cout << "Even: " << *(int *)r << std::endl;
+	auto *rr  = generic::find_if(std::begin(A), std::end(A), sizeof(A[0]), pp);
+	std::cout << "Odd: " <<*(int *)rr << std::endl;
 
 	*/
 

@@ -10,6 +10,7 @@
 
 using byte = unsigned char;
 using compare = bool (*)(const void *, const void *);
+using predicate = bool (*)(const void *);
 
 namespace generic{
 	//Questão 1
@@ -24,6 +25,14 @@ namespace generic{
 
 	//Questão 3
 	void *copy(void *first, void *last, void *d_first, size_t size);
+
+	//Questão 4
+	void *clone(void *first, void *last, size_t size);
+
+	//Questão 5
+	bool even(const void *x);
+	bool odd(const void *y);
+	void *find_if(void *first, void *last, size_t size, predicate p);
 }
 
 #endif

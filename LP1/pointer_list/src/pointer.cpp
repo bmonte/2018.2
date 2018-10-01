@@ -58,3 +58,43 @@ void *generic::copy(void *first, void *last, void *d_first, size_t size){
 	forward -= size;
 	return forward;
 }
+
+//Questão 4
+void *generic::clone(void *first, void *last, size_t size){
+	byte *begin = static_cast<byte *> (first);
+	byte *end = static_cast<byte *> (last);
+
+	int length = (int)(end - begin);
+
+	byte *clone = new byte[length - size];
+	byte *aux = clone;
+
+	while(begin < last){
+		memcpy(aux, begin, size);
+		begin += size;
+		aux += size;
+	}
+	return clone;
+}
+
+//Questão 5
+bool generic::even(const void *x){
+	int num = *(int*)x;
+	if (num % 2 == 0) return true;
+ 	else return false;
+}
+
+bool generic::odd(const void *y){
+	int num = *(int*)y;
+	if (num % 2 == 1) return true;
+ 	else return false;
+}
+
+void *generic::find_if(void *first, void *last, size_t size, predicate p){
+	byte *begin = static_cast<byte *> (first);
+
+	while (begin < last && !p(begin)) {
+		begin += size;
+	}
+	return begin;
+}
