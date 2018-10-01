@@ -98,3 +98,22 @@ void *generic::find_if(void *first, void *last, size_t size, predicate p){
 	}
 	return begin;
 }
+
+//Questão 6
+bool generic::equal(const void *x, const void *y){
+	int a = *(int*)x;
+	int b = *(int*)y;
+
+	if (a == b) return true;
+	else return false;
+}
+
+void *generic::find(void *first, void *last, size_t size, void *value, compare eq){
+	byte *begin = static_cast<byte *> (first);
+	byte *key = static_cast<byte *> (value);
+
+	while (begin < last && !eq(begin, key)) {
+		begin += size;
+	}
+	return begin;
+}

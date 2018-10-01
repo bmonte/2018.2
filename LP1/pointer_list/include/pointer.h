@@ -33,6 +33,11 @@ namespace generic{
 	bool even(const void *x);
 	bool odd(const void *y);
 	void *find_if(void *first, void *last, size_t size, predicate p);
+
+	//Questão 6
+	bool equal(const void *x, const void *y);
+
+	void *find(void *first, void *last, size_t size, void *value, compare eql);
 }
 
 #endif
