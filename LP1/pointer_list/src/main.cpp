@@ -100,5 +100,33 @@ int main(){
 	}
 
 	*/
+	//Teste da função unique -------------------------------------------------
+	//Teste da função partition -------------------------------------------------
+
+	/*
+	int A[] = {1, 2, 3, 4, 5, 6};
+	predicate p = generic::even;
+	auto d_first = generic::partition(std::begin(A), std::end(A), sizeof(A[0]), p);
+	std::cout << "[";
+	for(int i = 0; i < (int)(std::end(A) - std::begin(A)); i++){
+		std::cout << " " << A[i] << " ";
+	}
+		std::cout << "]" << std::endl;
+		std::cout << "New first position: [ " << *(int*)d_first << '\n';
+		std::cout << "Address: " << (int*)d_first << '\n';
+	*/
+
+	//Teste da função sort -------------------------------------------------
+
+	/*
+	int A[] = {3, 4, 5, 1, -5, 4};
+	compare cmp = generic::cmp;
+	generic::sort(std::begin(A), std::end(A), sizeof(A[0]), cmp);
+	std::cout << "[";
+	for(int i = 0; i < (int)(std::end(A) - std::begin(A)); i++){
+		std::cout << " " << A[i] << " ";
+	}
+		std::cout << "]" << std::endl;
+	*/
 	return 0;
 }

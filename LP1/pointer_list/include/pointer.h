@@ -17,27 +17,33 @@ namespace generic{
 	bool cmp(const void *x, const void *y);
 
 	void *min(void *first,  void *last, size_t size, compare cmp);
-
 	//Questão 2
 	void swap(void *x, void *y, size_t * size);
 
 	void reverse(void *first, void * last, size_t size);
-
 	//Questão 3
 	void *copy(void *first, void *last, void *d_first, size_t size);
-
 	//Questão 4
 	void *clone(void *first, void *last, size_t size);
-
 	//Questão 5
 	bool even(const void *x);
 	bool odd(const void *y);
 	void *find_if(void *first, void *last, size_t size, predicate p);
-
 	//Questão 6
 	bool equal(const void *x, const void *y);
 
-	void *find(void *first, void *last, size_t size, void *value, compare eql);
+	void *find(void *first, void *last, size_t size, void *value, compare eq);
+	//Questão 7
+	bool negative(const void *x);
+	bool all_of(void *first, void *last, size_t size, predicate p);
+	bool any_of(void *first, void *last, size_t size, predicate p);
+	bool none_of(void *first, void *last, size_t size, predicate p);
+	//Questão 9
+	//void *unique(void *first, void *last, size_t size, compare eq);
+	//Questão 10
+	void *partition(void *first, void *last, size_t size , predicate p);
+	//Questão 11
+	void sort(void *first, void *last, size_t size, compare cmp);
 }
 
 #endif

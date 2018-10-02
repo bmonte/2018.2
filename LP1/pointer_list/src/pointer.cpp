@@ -1,7 +1,7 @@
 #include "../include/pointer.h"
 
-
 //Questão 1:
+
 bool generic::cmp(const void * x, const void * y){
 	int a = *(int *)x;
 	int b = *(int *)y;
@@ -24,7 +24,6 @@ void *generic::min(void * first,  void * last, size_t size, compare cmp){
 	}
  	return smallest;
 }
-
 //Questão 2
 void generic::swap(void * x, void * y, size_t * size){
 	byte aux[*size];
@@ -44,7 +43,6 @@ void generic::reverse(void * first, void * last, size_t size){
 		begin += size;
 	}
 }
-
 //Questão 3
 void *generic::copy(void *first, void *last, void *d_first, size_t size){
 	byte *begin = static_cast<byte *> (first);
@@ -58,7 +56,6 @@ void *generic::copy(void *first, void *last, void *d_first, size_t size){
 	forward -= size;
 	return forward;
 }
-
 //Questão 4
 void *generic::clone(void *first, void *last, size_t size){
 	byte *begin = static_cast<byte *> (first);
@@ -76,7 +73,6 @@ void *generic::clone(void *first, void *last, size_t size){
 	}
 	return clone;
 }
-
 //Questão 5
 bool generic::even(const void *x){
 	int num = *(int*)x;
@@ -98,7 +94,6 @@ void *generic::find_if(void *first, void *last, size_t size, predicate p){
 	}
 	return begin;
 }
-
 //Questão 6
 bool generic::equal(const void *x, const void *y){
 	int a = *(int*)x;
@@ -116,4 +111,83 @@ void *generic::find(void *first, void *last, size_t size, void *value, compare e
 		begin += size;
 	}
 	return begin;
+}
+//Questão 7
+bool generic::negative(const void *x){
+	int num = *(int*)x;
+
+	if (num < 0) return true;
+	else return false;
+}
+
+bool generic::all_of( void * first, void * last, size_t size, predicate p){
+	byte *begin = static_cast<byte *> (first);
+
+	while (begin < last) {
+		if (!p(begin))
+			return false;
+
+			begin += size;
+	}
+	return true;
+}
+
+bool generic::any_of( void * first, void * last, size_t size, predicate p){
+	byte *begin = static_cast<byte *> (first);
+
+	while (begin < last) {
+		if (p(begin))
+			return true;
+
+			begin += size;
+	}
+	return false;
+}
+
+bool generic::none_of( void * first, void * last, size_t size, predicate p){
+	byte *begin = static_cast<byte *> (first);
+
+	while (begin < last) {
+		if (p(begin))
+			return false;
+
+			begin += size;
+	}
+	return true;
+}
+//Questão 9
+//void *unique(void *first, void *last, size_t size, compare eq){}
+//Questão 10
+void *generic::partition(void *first, void *last, size_t size , predicate p){
+	byte *begin = static_cast<byte *> (first);
+	byte *new_begin = static_cast<byte *> (first);
+
+	while (begin != last) {
+		byte *forward = static_cast<byte *> (first);
+		while(forward != last){
+			if (p(begin) && !p(forward)) {
+				swap(begin, forward, &size);
+				new_begin += size;
+			}
+			forward += size;
+		}
+		begin += size;
+	}
+	return new_begin;
+}
+//Questão 11
+void generic::sort(void *first, void *last, size_t size, compare cmp){
+	byte *begin = static_cast<byte *> (first);
+
+	while (begin != last) {
+		byte *forward = static_cast<byte *> (first);
+		while(forward != last){
+			if(cmp(begin, forward)){ //Ascending order
+			//if(!cmp(begin, forward)){ //Descending order
+				swap(begin, forward, &size);
+			}
+			forward += size;
+		}
+		begin += size;
+	}
 }
