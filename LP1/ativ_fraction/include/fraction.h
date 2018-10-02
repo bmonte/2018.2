@@ -2,12 +2,14 @@
 #define FRACTION_H
 
 #include <iostream>
+#include <iomanip>
 
 class Fraction{
   private:
     int numerator;
     int denominator;
-    //int mdc(int, int);
+    int number;
+    int mdc(int, int);
   public:
     Fraction();
     Fraction(int, int);
@@ -16,10 +18,11 @@ class Fraction{
     int getDenominator();
     void setDenominator(int);
     bool isZero(void) const;
-    /*bool isProper();
-    int reduce();
-    int make_proper();
-    ~Fraction();*/
+    bool isProper(void) const;
+    bool isReduced(void);
+    void reduce(void);
+    void make_proper(void);
+    //~Fraction();
     friend std::ostream & operator<<(std::ostream & os, const Fraction f);
 };
 
