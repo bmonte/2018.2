@@ -1,24 +1,23 @@
 #include "../include/fraction.h"
 
 int main(void) {
-  Fraction x(15, 4);
+  Fraction x(1, 2);
+  Fraction y(3, 4);
+  std::cout << "Função: " << x / y << std::endl;
+
 
   if (!x.isZero())
-    std::cout << x << " Denominador não é zero" << std::endl;
+    std::cout << " Denominador não é zero" << std::endl;
   else
-    std::cout << x << " É zero" << std::endl;
+    std::cout<< " Denominador é zero" << std::endl;
   if (x.isProper())
-    std::cout << x << " É propria" << std::endl;
+    std::cout << " É propria" << std::endl;
   else
-    std::cout << x << " É impropria" << std::endl;
-    if (x.isReduced()){
-      std::cout << x << " É reduzivel" << std::endl;
+    std::cout << " É impropria" << std::endl;
+    if (!x.isReduced()){
+      std::cout << " Pode reduzir" << std::endl;
       x.reduce();
-      std::cout << "Função reduzida: " << x <<'\n';
+      std::cout << " Fração reduzida: " << x <<'\n';
     }
-    else
-      std::cout << x << " Não é reduzivel" << std::endl;
-  x.make_proper();
-  std::cout << "Função mista: " << x <<'\n';
   return 0;
 }
