@@ -1,4 +1,5 @@
 #include "../include/kenoBet.h"
+#include "../include/functions.h"
 
 const int spots_bet = 15;
 const int hits = 16;
@@ -21,12 +22,16 @@ double PayoutTable[spots_bet][hits] = {
    { 0, 0, 0, 0.5, 0.5, 1, 2, 5, 15, 50, 150, 300, 600, 1200, 2500, 10000} //15
 };
 
-bool KenoBet::add_number(number_type spot_){
-  // using default comparison:
-    std::sort (m_spots.begin(), m_spots.end());
+KenoBet::KenoBet(){
+  m_wage = 0;
+  m_spots.clear();
+  m_rounds = 0;
+}
 
+bool KenoBet::add_number(number_type spot_){
     if (std::binary_search (m_spots.begin(), m_spots.end(), spot_) or spot_ > 80)
        return false; else m_spots.push_back (spot_);
+    my::sort (m_spots);
 
 return true;
 }
@@ -38,6 +43,10 @@ bool KenoBet::set_wage(cash_type wage_){
 return true;
 }
 
+void KenoBet::set_rounds(number_type rounds_){
+  m_rounds = rounds_;
+}
+
 void KenoBet::reset(void) {
   m_spots.clear();
   m_wage = 0;
@@ -47,28 +56,26 @@ cash_type KenoBet::get_wage(void) const {
   return m_wage;
 }
 
+number_type KenoBet::get_rounds(void) const {
+  return m_rounds;
+}
+
 size_t KenoBet::size(void) const{
   return m_spots.size();
 }
 
-/*set_of_numbers_type set_random(void){
-  srand(time(NULL)); //Seed
-
-  set_of_numbers_type random;
-
-  auto cont(0);
-  while (cont < 20) {
-    auto number = (rand() %80) + 1;
-
-    if (!std::binary_search (random.begin(), random.end(), number)){
-      random.push_back(number);
-      cont++;
-    }
-    std::sort (random.begin(), random.end());
-  }
-  return random;
-}*/
-
 set_of_numbers_type KenoBet::get_hits(const set_of_numbers_type & hits_) const{
+ set_of_numbers_type m_hits;
+ for (unsigned int i = 0; i < size(); i++) {
+   for (auto j = 0; j < 20; j++) {
+     if (m_spots[i] == hits_[j]) {
+       m_hits.push_back(m_spots[i]);
+     }
+   }
+ }
+ return m_hits;
+}
 
+set_of_numbers_type KenoBet::get_spots(void) const{
+  return m_spots;
 }

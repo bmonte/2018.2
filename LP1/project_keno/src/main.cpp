@@ -1,53 +1,35 @@
 #include <iostream>
-#include <iomanip>
 #include <string>
-#include <map>
-#include <random>
-#include <cmath>
 #include "../include/kenoBet.h"
+#include "../include/functions.h"
 
 int main(int argc, char *argv[]) {
-
+  std::string bet_file = argv[1];
   KenoBet x;
+  my::file_reader(bet_file, x);
 
-/*  srand(time()); //Seed
+  std::cout << "wage: " << x.get_wage() << '\n';
+    std::cout << "rounds: " << x.get_rounds() << '\n';
 
-  set_of_numbers_type random;
+  set_of_numbers_type rando = set_random();
+  set_of_numbers_type player_pick = x.get_spots();
+  set_of_numbers_type acertos = x.get_hits(rando);
 
-  auto cont;
-  while (cont < 20) {
-    auto number = (rand() %80) + 1;
+  for (unsigned x = 0; x < rando.size(); x++) {
+    std::cout << rando[x] << " ";
+  }
+    std::cout << "Tam: " << rando.size() << '\n';
 
-    if (!std::binary_search (random.begin(), random.end(), number)){
-      random.push_back(number);
-      cont++;
+    for (unsigned y = 0; y < player_pick.size(); y++) {
+      std::cout << player_pick[y] << " ";
     }
-    std::sort (random.begin(), random.end());
-  }*/
+      std::cout << "Tam: " << player_pick.size() << '\n';
 
-set_of_numbers_type random;
 
-auto cont(0);
-while (cont < 20) {
-  // Seed with a real random value, if available
-  std::random_device r;
-
-  // Choose a random mean between 1 and 6
-  std::default_random_engine e1(r());
-  std::uniform_int_distribution<int> uniform_dist(1, 80);
-  int number = uniform_dist(e1);
-
-  if (!std::binary_search (random.begin(), random.end(), number)){
-    random.push_back(number);
-    cont++;
+  for (unsigned a = 0; a < acertos.size(); a++) {
+    std::cout << acertos[a] << '\n';
   }
-  std::sort (random.begin(), random.end());
-}
-
-
-  for (size_t j = 0; j < 20; j++) {
-    std::cout << random[j] << '\n';
-  }
+  std::cout << "Tam: " << acertos.size() << '\n';
 
   return 0;
 }
