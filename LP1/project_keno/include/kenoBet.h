@@ -60,6 +60,8 @@ class KenoBet{
     /* ! Return a vector < spot_type > with the spots the player has picked so far .
     @return The vector < spot_type > with the player ’s spots picked so far . */
     set_of_numbers_type get_spots(void) const;
+
+    cash_type get_payout(cash_type round_wage, const set_of_numbers_type & hits_);
   };
 
 #endif

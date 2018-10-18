@@ -10,9 +10,10 @@ void my::sort(set_of_numbers_type & vector) {
 }
 
 set_of_numbers_type set_random(void){
-  srand(time(NULL)); //Seed
-
   set_of_numbers_type random;
+  srand (time(NULL)); //gen seed with system time as base
+  
+  std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 
   auto cont(0);
   while (cont < 20) {
@@ -25,7 +26,7 @@ set_of_numbers_type set_random(void){
     my::sort(random);
   }
   return random;
-  /*set_of_numbers_type random;
+/*  set_of_numbers_type random;
 
   auto cont(0);
   while (cont < 20) {
@@ -41,8 +42,10 @@ set_of_numbers_type set_random(void){
       random.push_back(number);
       cont++;
     }
-    std::sort (random.begin(), random.end());*/
-  }
+    std::sort (random.begin(), random.end());
+    return random;
+  }*/
+}
 
 void my::file_reader(std::string file_path, KenoBet &object){
     std::ifstream bet_file;
@@ -67,4 +70,5 @@ void my::file_reader(std::string file_path, KenoBet &object){
         if(object.add_number(stoi(num)))
           iterator++;
     }
+  bet_file.close();
 }
