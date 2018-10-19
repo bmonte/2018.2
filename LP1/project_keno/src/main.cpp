@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+
 #include "../include/kenoBet.h"
 #include "../include/functions.h"
 
@@ -13,7 +14,7 @@ int main(int argc, char *argv[]) {
 
   auto premio = 0;
   float dinheiro_turno = x.get_wage()/x.get_rounds();
-
+  std::cout << "--------------------------------------------------" << '\n';
   for (auto turnos = 0; turnos < x.get_rounds(); turnos++)
   {
 
@@ -34,11 +35,10 @@ int main(int argc, char *argv[]) {
     std::cout << std::endl;
 
     std::cout << "Pagamento: " << x.get_payout(dinheiro_turno, acertos) << std::endl;
-
+    std::cout << "--------------------------------------------------" << '\n';
     premio += x.get_payout(dinheiro_turno, acertos);
 
   }
-    std::cout << "--------------------------------------------------" << '\n';
     std::cout << "Saldo final: " << premio << std::endl;
     x.set_wage(premio);
 
