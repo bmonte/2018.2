@@ -29,6 +29,7 @@ std::vector<std::string> expressions =
     "3823 / 1",
     "(5 + 3)",
     "3 ^ 3)",
+    "-3",
 };
 
 void print_error_msg( const Parser::ResultType & result, std::string str )
