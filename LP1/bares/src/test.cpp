@@ -3,34 +3,7 @@
 #include <vector>
 
 #include "../include/parser.h"
-
-std::vector<std::string> expressions =
-{
-    "4 + 03",
-    "10",
-    "    12    +    4   8",
-    "32767 - 32768 + 3",
-    "5 + -32766",
-    "5 + -32769",
-    "12 + 3",
-    "-3+-5+-6",
-    "12 + 3     -3 + -34 ",
-    "+12",
-    "1.3 * 4",
-    "a + 4",
-    "       ",
-    "  123 *  548",
-    "4 + ",
-    "32a23",
-    "43 + 54 -   ",
-    "1234567888889974232214433432 + 4",
-    "5 % 4",
-    "(3 ^ 2 + 2",
-    "3823 / 1",
-    "(5 + 3)",
-    "3 ^ 3)",
-    "-3",
-};
+#include "../include/file.h"
 
 void print_error_msg( const Parser::ResultType & result, std::string str )
 {
@@ -68,10 +41,36 @@ void print_error_msg( const Parser::ResultType & result, std::string str )
 }
 
 
-int main()
+int main(int argc, char const *argv[])
 {
+      File my_file(argv[1], argv[2]); //Instancia um arquivo.
     Parser my_parser; // Instancia um parser.
-    // Tentar analisar cada expressão da lista.
+
+    std::string expression;
+
+    while (not my_file.is_eof()) {
+      expression = my_file.read_file();
+      // Fazer o parsing desta expressão.
+      auto result = my_parser.parse( expression );
+      // Preparar cabeçalho da saida.
+      std::cout << std::setfill('=') << std::setw(80) << "\n";
+      std::cout << std::setfill(' ') << ">>> Parsing \"" << expression << "\"\n";
+      // Se deu pau, imprimir a mensagem adequada.
+      if ( result.type != Parser::ResultType::OK )
+          print_error_msg( result, expression );
+      else
+          std::cout << ">>> Expression SUCCESSFULLY parsed!\n";
+
+       // Recuperar a lista de tokens.
+      auto lista = my_parser.get_tokens();
+      std::cout << ">>> Tokens: { ";
+      std::copy( lista.begin(), lista.end(),
+              std::ostream_iterator< Token >(std::cout, " ") );
+      std::cout << "}\n";
+      std::cout << std::endl;
+    }
+
+  /*  // Tentar analisar cada expressão da lista.
     for( const auto & expr : expressions )
     {
         // Fazer o parsing desta expressão.
@@ -92,7 +91,7 @@ int main()
                 std::ostream_iterator< Token >(std::cout, " ") );
         std::cout << "}\n";
         std::cout << std::endl;
-    }
+    }*/
 
 
 
