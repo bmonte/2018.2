@@ -1,0 +1,23 @@
+Integer constant out of range beginning at column (1)!
+Missing <term> at column (3)!
+Ill formed integer at column (5)!
+Extraneous symbol after valid expression found at column (3)!
+Extraneous symbol after valid expression found at column (2)!
+Extraneous symbol after valid expression found at column (7)!
+Ill formed integer at column (4)!
+Ill formed integer at column (1)!
+Ill formed integer at column (1)!
+Ill formed integer at column (7)!
+Extraneous symbol after valid expression found at column (7)!
+Extraneous symbol after valid expression found at column (6)!
+Extraneous symbol after valid expression found at column (2)!
+Ill formed integer at column (1)!
+Missing closing ")" at column (11)!
+Division by zero!
+Division by zero!
+Numeric overflow error!
+37
+40
+5
+16
+-3
