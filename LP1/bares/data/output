@@ -1,0 +1,24 @@
+Integer constant out of range beginning at column (0)!
+Missing <term> at column (2)!
+Missing <term> at column (4)!
+Extraneous symbol after valid expression found at column (2)!
+Extraneous symbol after valid expression found at column (1)!
+Extraneous symbol after valid expression found at column (6)!
+Missing <term> at column (3)!
+Ill formed integer at column (0)!
+Ill formed integer at column (0)!
+Missing <term> at column (6)!
+Extraneous symbol after valid expression found at column (6)!
+Extraneous symbol after valid expression found at column (5)!
+Extraneous symbol after valid expression found at column (1)!
+Ill formed integer at column (0)!
+Missing closing ")" at column(0)!
+Expression SUCCESSFULLY parsed!
+Expression SUCCESSFULLY parsed!
+Expression SUCCESSFULLY parsed!
+Expression SUCCESSFULLY parsed!
+Expression SUCCESSFULLY parsed!
+Expression SUCCESSFULLY parsed!
+Expression SUCCESSFULLY parsed!
+Ill formed integer at column (1)!
+Unexpected end of input at column (0)!

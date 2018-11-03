@@ -25,3 +25,7 @@ std::string File::read_file(){
 
   return line;
 }
+void File::write_file(std::string output){
+	try{ f_output << output << "\n"; }
+  catch( const std::ios_base::failure &err ){}
+}
