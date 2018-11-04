@@ -1,45 +1,28 @@
-# Introduction
+# Introdução
 
-This is a **BARES (Basic ARithmetic Expression Evaluator based on Stacks)** programming project, that includes a recursive descending parser for an **EBNF (Extended Backus-Naur Form)** grammar.
+Este é um programa **BARES (Basic ARithmetic Expression Evaluator based on Stacks)**, ele é capaz de receber expressões aritméticas simples e resolve-las, para isso a gramática **EBNF (Extended Backus-Naur Form)** é usada.
 
-# Compile and Run
+# Gramática EBNF
 
-In order to generate a BARES executable at the "bin" dir, run:
-> $ make
-
-To run this project based on input and output files:
-> $ ./bin/bares <input_file> [output_file]
-
-# The Grammar
-
-The EBNF grammar used in this project represents arithmetic expressions that supports scope definition and the following operations with integers (-32768 to 32767):
-
-<ul>
-	<li>Addition (+)</li>
-	<li>Subtraction (-)</li>
-	<li>Multiplication (*)</li>
-	<li>Division (/)</li>
-	<li>Power (^)</li>
-	<li>Module (%)</li>
-</ul>
-
-
-This **EBNF** grammar is defined by the statements:
-
-    <expression>       :=   <term>, { ( "+" | "-" | "*" | "/" | "%" | "^" ), <term> };
+		<expression>       :=   <term>, { ( "+" | "-" | "*" | "/" | "%" | "^" ), <term> };
     <term>             :=   "(", <expression>, ")" | <integer>;
     <integer>          :=   0 | [ "-" ], <natural_number>;
     <natural_number>   :=   <digit_excl_zero>, {<digit>};
     <digit_excl_zero>  :=   "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9";
     <digit>            :=   "0" | <digit_excl_zero>;
 
+# Compilação e execução
 
-# Error Handling
+Para gerar o arquivo **BARES** executavel:
+> $ make
 
-Syntax and run-time errors are both supported by the program.
+Para rodar o arquivo gerado anteriormente:
+> $ ./Bares <input_file> [output_file]
+
+# Tratamento de erros
 
 1. **Integer constant out of range beginning at column (n)!**
-2. **Missing term at column (n)!**
+2. **Missing <term> at column (n)!**
 3. **Extraneous symbol after valid expression found at column (n)!**
 4. **Ill formed integer at column (n)!**
 5. **Missing closing ”)” at column (n)!**
@@ -47,4 +30,11 @@ Syntax and run-time errors are both supported by the program.
 7. **Division by zero!**
 8. **Numeric overflow error!**
 
-**Developed by Brunno Monte and Luan Rocha.
+# Implementações futuras
+
+O programa apresenta pequenos "erros" com o tratamento de erros, sendo eles:
+
+	* A expresão "---3", por exemplo, é tratada como *Ill formed integer* no lugar de "-3";
+	* Algumas expressões são tratadas como *Missing <term>* no lugar de *Ill formed integer*.
+
+**Developed by Brunno Monte (bmonte@outlook.com).

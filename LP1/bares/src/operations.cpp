@@ -145,8 +145,9 @@ value_t Operation::execute(value_t v1, value_t v2, character c){
 }
 
 value_t Operation::execute_postfix(std::vector<Token> postfix){
-	result = Parser::ResultType(Parser::ResultType::OK);	// defines the Result result as OK by default
-	std::stack<value_t> stack;			// stores the results of the operations
+	std::stack<value_t> stack;
+
+  result = Parser::ResultType(Parser::ResultType::OK);
 
 	for(auto token : postfix){
 		if(is_operand(token)){
@@ -157,7 +158,7 @@ value_t Operation::execute_postfix(std::vector<Token> postfix){
 			auto v1 = stack.top();
 			stack.pop();
 			auto final_result = execute(v1, v2, token.value);
-			if(final_result < -32768 || final_result > 32767){
+			if(final_result < -32768 or final_result > 32767){
 				result = Parser::ResultType(Parser::ResultType::NUMERIC_OVERFLOW);
 				stack.push(-1);
 			}else{
