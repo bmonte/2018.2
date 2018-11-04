@@ -32,7 +32,7 @@ Para rodar o arquivo gerado anteriormente:
 
 # Implementações futuras
 
-O programa apresenta pequenos "erros" com o tratamento de erros, sendo eles:
+O programa apresenta pequenos "problemas" com o tratamento de erros, sendo eles:
 
 	* A expresão "---3", por exemplo, é tratada como *Ill formed integer* no lugar de "-3";
 	* Algumas expressões são tratadas como *Missing <term>* no lugar de *Ill formed integer*.
