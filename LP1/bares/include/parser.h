@@ -51,7 +51,7 @@ class Parser
             /// Default contructor.
             explicit ResultType( code_t type_=OK , size_type col_=0u )
                     : type{ type_ }
-                    , at_col{ col_ }
+                    , at_col{ col_ + 1}
             { /* empty */ }
         };
 
@@ -74,6 +74,7 @@ class Parser
         Parser( const Parser & ) = delete;  // Construtor cópia.
         /// Turn off assignment operator.
         Parser & operator=( const Parser & ) = delete; // Atribuição.
+
 
     private:
         /// Terminal symbols table

@@ -4,10 +4,9 @@
 #include <iostream>		// std::cin, std::cout
 #include <string>		// std::string, std::stoi
 #include <vector>		// std::vector
-#include <algorithm>	// std::distance
 #include <cmath>		// pow
 #include <stack> 		// std::stack
-#include <cassert>		// assert
+#include <cassert>  // assert
 
 #include "token.h"		// Token struct
 #include "parser.h"	// Parser struct
@@ -24,9 +23,9 @@ class Operation{
     Operation(const Operation &) = delete;
     /// Default destructor
     ~Operation(void) = default;
-    //==== Get method
+    //==== Get and Set methods
     Parser::ResultType get_result(void){return result;}
-    value_t get_precedence(character);
+    value_t set_precedence(character);
     //==== Conversion methods
     std::vector<Token> infix_to_postfix(std::vector<Token>);
     value_t evaluate_postfix(std::vector<Token>);
@@ -38,6 +37,8 @@ class Operation{
     bool right_association(character m_character){return m_character == "^";}
     bool precedence(character, character);
     value_t execute(value_t, value_t, character);
+    value_t execute_postfix(std::vector<Token>);
+
   private:
     //==== Private members
     Parser::ResultType result;

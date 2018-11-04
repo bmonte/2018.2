@@ -230,7 +230,7 @@ if ( integer() )
 
 		}else{
 			m_result = ResultType(ResultType::MISSING_CLOSE_SCOPE,
-                         std::distance(m_expr.begin(), begin_token));}
+                         std::distance(m_expr.begin(), m_it_curr_symb));}
 }
 else
 {

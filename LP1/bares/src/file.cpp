@@ -15,7 +15,7 @@ File::~File(){
 }
 //Support methods
 bool File::is_eof(void){
-  return not f_input.good() or not f_input.is_open();
+  return f_input.eof();
 }
 //Input method
 std::string File::read_file(){
@@ -25,7 +25,7 @@ std::string File::read_file(){
 
   return line;
 }
-void File::write_file(std::string output){
-	try{ f_output << output << "\n"; }
+void File::write_file(std::string line){
+	try{ f_output << line << "\n"; }
   catch( const std::ios_base::failure &err ){}
 }
